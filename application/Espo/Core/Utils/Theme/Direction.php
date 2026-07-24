@@ -1,3 +1,4 @@
+<?php
 /************************************************************************
  * This file is part of EspoCRM.
  *
@@ -26,16 +27,10 @@
  * these Appropriate Legal Notices must retain the display of the "EspoCRM" word.
  ************************************************************************/
 
-import EnumFieldView from 'views/fields/enum';
+namespace Espo\Core\Utils\Theme;
 
-export default class FormThemeFieldView extends EnumFieldView {
-
-    setupOptions() {
-        const list = Object.keys(this.getMetadata().get('themes') || {})
-            .sort(
-                (v1, v2) => this.translate(v1, 'theme').localeCompare(this.translate(v2, 'theme'))
-            );
-
-        this.params.options = ['', ...list];
-    }
+enum Direction: string
+{
+    case Ltr = 'ltr';
+    case Rtl = 'rtl';
 }
